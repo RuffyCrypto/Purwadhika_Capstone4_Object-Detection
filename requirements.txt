@@ -1,0 +1,7 @@
+streamlit>=1.18
+ultralytics
+pyyaml
+Pillow
+opencv-python-headless
+gdown
+requests
