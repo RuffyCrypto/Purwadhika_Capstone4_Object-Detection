@@ -1,8 +1,8 @@
+opencv-python-headless==4.7.0.72
 streamlit>=1.18
 ultralytics
 pyyaml
 Pillow
-opencv-python-headless
 gdown
 requests
 matplotlib
