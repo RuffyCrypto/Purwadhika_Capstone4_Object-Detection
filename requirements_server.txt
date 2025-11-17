@@ -4,3 +4,4 @@ ultralytics
 numpy
 pillow
 requests
+python-multipart
