@@ -1,8 +1,8 @@
-streamlit==1.30.0
-pillow==9.5.0
-numpy==1.26.4
-pyyaml==6.0
-opencv-python==4.8.1.78
-matplotlib==3.8.1
-tqdm==4.66.1
-requests==2.31.0
+streamlit
+pillow
+numpy
+pyyaml
+opencv-python
+matplotlib
+tqdm
+requests
