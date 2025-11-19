@@ -15,18 +15,27 @@ COPY . /home/render
 
 RUN pip install --upgrade pip
 
-# Install main dependencies including ultralytics
-RUN pip install --no-cache-dir fastapi uvicorn[standard] python-multipart pillow pyyaml opencv-python ultralytics
+# 1) Install NUMPY FIRST, pin < 2 to avoid ABI crashes with some libs
+RUN pip install --no-cache-dir "numpy<2"
 
-# Install CPU PyTorch
-RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu torch==2.1.0 torchvision==0.16.0
+# 2) Install main dependencies, pin opencv-python to a version that works with numpy 1.x
+RUN pip install --no-cache-dir \
+    fastapi \
+    "uvicorn[standard]" \
+    python-multipart \
+    pillow \
+    pyyaml \
+    "opencv-python<4.12" \
+    ultralytics
 
-# FORCE NUMPY < 2 (MUST BE LAST TO AVOID ABI CRASHES)
+# 3) Install CPU PyTorch
+RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu \
+    torch==2.1.0 torchvision==0.16.0
+
+# (Optional safety: ensure numpy<2 is still in place after all installs)
 RUN pip install --no-cache-dir "numpy<2"
 
 # --- HOTFIX: Patch Ultralytics AAttn qkv AttributeError ---
-# In some ultralytics builds, AAttn uses self.qkv in forward()
-# but only self.qk is defined. This replaces self.qkv(x) -> self.qk(x).
 RUN python - << 'EOF'
 from pathlib import Path
 import ultralytics.nn.modules.block as block
