@@ -1,5 +1,6 @@
 # FoodCal - YOLOv12 Inference Package (Streamlit)
 
+Please be patient, max timeout is 300s
 This package helps you run inference with a YOLOv12 `best.pt` model and a Streamlit app
 that estimates calories based on detected food items.
 
