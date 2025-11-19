@@ -1,7 +1,0 @@
-fastapi
-uvicorn[standard]
-git+https://github.com/ultralytics/ultralytics.git@main
-python-multipart
-numpy
-pillow
-requests
