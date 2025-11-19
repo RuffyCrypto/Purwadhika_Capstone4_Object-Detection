@@ -4,18 +4,19 @@ This package helps you run inference with a YOLOv12 `best.pt` model and a Stream
 that estimates calories based on detected food items.
 
 ## Steps
-1. Place your `best.pt` into the `models/` folder (path: `models/best.pt`).
-2. Install dependencies:
+1. I use google collab for modelling with colab_train_yolov_prefilledok.ipynb
+2. Place your `best.pt` into the `models/` folder (path: `models/best.pt`).
+3. Install dependencies:
    ```
    python -m venv venv
    source venv/bin/activate
    pip install -r requirements.txt
    ```
-3. Clone YOLOv12 repo (the script will do it automatically if not present):
+4. Clone YOLOv12 repo (the script will do it automatically if not present):
    ```
    bash scripts/clone_yolov12.sh
    ```
-4. Run Streamlit:
+5. Run Streamlit:
    ```
    streamlit run app/streamlit_app.py
    ```
