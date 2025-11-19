@@ -3,7 +3,7 @@ import streamlit as st
 from PIL import Image
 from pathlib import Path
 import subprocess, os, glob
-from src.calorie_map import get_calorie_info
+from calorie_map import get_calorie_info
 
 st.set_page_config(layout='wide')
 st.title('FoodCal - YOLOv12 Inference')
