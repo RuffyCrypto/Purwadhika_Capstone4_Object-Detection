@@ -12,15 +12,15 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     wget \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
-# Copy your FastAPI app code (inference_server.py, weights, etc.)
+# Copy your FastAPI app and other project files
 COPY . /home/render
 
-# Clone YOLOv12 repo (this contains the correct ultralytics fork)
+# Clone YOLOv12 repo (for detect.py, configs, etc.)
 RUN if [ ! -d "./yolov12" ]; then git clone https://github.com/sunsmarterjie/yolov12.git yolov12; fi
 
 RUN pip install --upgrade pip
 
-# 1) Core numeric + torch stack (CPU)
+# 1) Core numeric + torch stack
 RUN pip install --no-cache-dir "numpy<2"
 
 RUN pip install --no-cache-dir --index-url https://download.pytorch.org/whl/cpu \
@@ -37,9 +37,9 @@ RUN pip install --no-cache-dir \
     thop \
     seaborn
 
-# 3) Install YOLOv12's own ultralytics (from the repo), NOT PyPI
-#    This ensures the architecture matches your YOLOv12 weights.
-RUN pip install --no-cache-dir -e yolov12/ --no-deps
+# 3) Install YOLOv12 fork of Ultralytics from GitHub (recommended method)
+#    This overwrites any existing 'ultralytics' with the YOLOv12 version.
+RUN pip install --no-cache-dir "git+https://github.com/sunsmarterjie/yolov12.git"
 
 RUN mkdir -p /home/render/models
 
