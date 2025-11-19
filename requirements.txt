@@ -1,0 +1,20 @@
+# Requirements for the capstone project (YOLOv12 workflow)
+# Note: YOLOv12 is typically installed from its GitHub repo (not PyPI).
+# See: https://github.com/sunsmarterjie/yolov12 and https://docs.ultralytics.com/
+
+python>=3.8
+torch
+torchvision
+opencv-python
+pillow
+pyyaml
+streamlit
+numpy
+pandas
+matplotlib
+scikit-learn
+# For YOLOv12: clone and install from GitHub:
+# git clone https://github.com/sunsmarterjie/yolov12.git
+# cd yolov12
+# pip install -r requirements.txt
+# pip install -e .
