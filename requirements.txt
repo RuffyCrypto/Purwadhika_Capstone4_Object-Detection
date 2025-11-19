@@ -1,8 +1,0 @@
-streamlit>=1.18
-requests
-Pillow
-fastapi
-uvicorn[standard]
-onnxruntime
-ultralytics
-python-multipart
