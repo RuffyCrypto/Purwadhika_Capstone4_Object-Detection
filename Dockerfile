@@ -35,10 +35,10 @@ RUN pip install --no-cache-dir \
     pyyaml \
     "opencv-python<4.12" \
     thop \
-    seaborn
+    seaborn \
+    huggingface_hub
 
-# 3) Install YOLOv12 fork of Ultralytics from GitHub (recommended method)
-#    This overwrites any existing 'ultralytics' with the YOLOv12 version.
+# 3) Install YOLOv12 fork of Ultralytics from GitHub
 RUN pip install --no-cache-dir "git+https://github.com/sunsmarterjie/yolov12.git"
 
 RUN mkdir -p /home/render/models
